@@ -66,8 +66,10 @@ public class RegisterServlet extends HttpServlet {
 			java.io.File fdir = new File(
 					request.getSession().getServletContext().getRealPath("/")
 					+ "/upload/" + sdf2.format(now));
+			fdir.mkdir();
 			
-			sf.saveAs("/"+sf.getFieldName());
+			sf.saveAs("/upload" +sdf2.format(now) + "/" +fname,
+					SmartUpload.SAVE_AUTO);
 			
 			out.print("<html><head><meta charset='utf-8'></head>");
 			out.print("<body><a href='/"+ request.getContextPath() + "/" +sf.getFieldName()+"'>обть</a></body></html>");
